@@ -24,7 +24,7 @@ public:
 	void SetInventory(Inventory _inventory) { inventoryComponent = _inventory; }
 	Inventory GetInventory() { return inventoryComponent; }
 
-	void Attack(Entity _enemy);
+	void Attack(Entity& _enemy);
 
 protected:
 

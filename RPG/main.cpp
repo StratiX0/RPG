@@ -2,8 +2,6 @@
 
 int main()
 {
-    
-
 
     Equipment sword;
     sword.InitEquipment(Sword, 10);

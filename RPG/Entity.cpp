@@ -7,7 +7,7 @@ void Entity::InitEntity(EntityType _type, int _health, Inventory _inventoryCompo
 	SetInventory(_inventoryComponent);
 }
 
-void Entity::Attack(Entity _enemy)
+void Entity::Attack(Entity& _enemy)
 {
 	Equipment sword = inventoryComponent.GetItem(0);
 	_enemy.SetHealth(_enemy.GetHealth() - sword.GetDamage());
