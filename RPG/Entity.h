@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Inventory.h"
 #include "Competences.h"
+#include "Status.h"
 
 enum EntityType
 {
@@ -14,7 +15,8 @@ class Entity
 {
 public:
     // Constructeur
-    Entity(std::string _name, EntityType _type, float _health, Inventory _inventoryComponent) : name(_name), type(_type), health(_health), inventoryComponent(_inventoryComponent) {}
+    Entity(std::string _name, EntityType _type, float _health, Inventory _inventoryComponent, StatusEffect _statusEffect) :
+	name(_name), type(_type), health(_health), inventoryComponent(_inventoryComponent), statusEffectComponent(_statusEffect) {}
 
     void SetName(std::string _name) { name = _name; }
     std::string GetName() { return name; }
@@ -26,7 +28,7 @@ public:
     EntityType GetType() { return type; }
 
     void SetInventory(Inventory _inventory) { inventoryComponent = _inventory; }
-    Inventory GetInventory() { return inventoryComponent; }
+    Inventory& GetInventory() { return inventoryComponent; }
 
     void Attack(float _damage, Entity& _enemy);
 	void GetDamage(float _damage) { health -= _damage; }
@@ -38,6 +40,9 @@ public:
 	void AddCompetences(Competence _competence) { competencesComponent.AddCompetence(_competence); }
 	Competences& GetCompetences() { return competencesComponent; }
 
+	void SetStatusEffect(StatusEffect _statusEffect) { statusEffectComponent = _statusEffect; }
+	StatusEffect& GetStatusEffect() { return statusEffectComponent; }
+
 protected:
 
 private:
@@ -48,4 +53,5 @@ private:
 
     Inventory inventoryComponent;
 	Competences competencesComponent;
+    StatusEffect statusEffectComponent;
 };

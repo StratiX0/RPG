@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <string>
 
 enum CompetenceType
 {
@@ -11,7 +12,10 @@ enum CompetenceType
 class Competence
 {
 public:
-    Competence(CompetenceType _type, int _quantity, int _time, int _currentTimeUse, float _value, float _multiplier, bool _isActive) : type(_type), quantity(_quantity), time(_time), currentTimeUse(_currentTimeUse), value(_value), multiplier(_multiplier), isActive(_isActive) {}
+    Competence(std::string _name, CompetenceType _type, int _quantity, int _time, int _currentTimeUse, float _value, float _multiplier, bool _isActive) : name(_name), type(_type), quantity(_quantity), time(_time), currentTimeUse(_currentTimeUse), value(_value), multiplier(_multiplier), isActive(_isActive) {}
+
+	void SetName(std::string _name) { name = _name; }
+	std::string GetName() const { return name; }
 
 	void SetType() { type = type; }
     CompetenceType GetType() const { return type; }
@@ -52,6 +56,7 @@ private:
     friend class Entity;
     friend class Competences;
 
+	std::string name;
     CompetenceType type;
     int quantity;
     int time;
