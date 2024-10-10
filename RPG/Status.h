@@ -2,7 +2,7 @@
 
 enum StatusType
 {
-	Normal,
+	None,
 	Freeze,
 	Poison,
 	Burn

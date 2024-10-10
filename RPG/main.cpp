@@ -3,13 +3,13 @@
 int main()
 {
 
-	Equipment sword = Equipment(Sword, 10, 1);
+	Equipment sword = Equipment("Couteau a beurre tranchant", Sword, 10, 1, None, Attack);
     Inventory playerInv;
     playerInv.AddItem(sword);
 	playerInv.SetActiveItemIndex(0);
-	StatusEffect playerStatusEffect = StatusEffect(Normal, 0, 0);
+	StatusEffect playerStatusEffect = StatusEffect(None, 0, 0);
 
-    Entity player = Entity("Player", Player, 100, playerInv, playerStatusEffect);
+    Entity player = Entity("Player", Player, 100, playerInv, playerStatusEffect, 100, 100);
 
     Competences playerCompetences;
     Competence attackBuff = Competence("Boule de feu qui brule" ,Attack, 3, 1, 0, 5, 1.5f, false);
@@ -22,17 +22,18 @@ int main()
 
 
 
-    Equipment sword2 = Equipment(Sword, 5, 1);
+    Equipment sword2 = Equipment("Cure dent piquant", Sword, 5, 1, None, Attack);
     Inventory npcInv;
 	npcInv.AddItem(sword2);
-	StatusEffect npcStatusEffect = StatusEffect(Normal, 0, 0);
+	StatusEffect npcStatusEffect = StatusEffect(None, 0, 0);
 
-    Entity npc= Entity("NPC", NPC, 100, npcInv, npcStatusEffect);
+    Entity npc= Entity("NPC", NPC, 100, npcInv, npcStatusEffect, 100, 100);
 
     Competences npcCompetences;
     Competence npcHeal = Competence("Pansement qui panse", Heal, 3, 1, 0, 3, 1, false);
     npcCompetences.AddCompetence(npcHeal);
 	npc.SetCompetences(npcCompetences);
+
 
 
     bool gameRunning = true;

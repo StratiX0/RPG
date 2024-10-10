@@ -15,8 +15,8 @@ class Entity
 {
 public:
     // Constructeur
-    Entity(std::string _name, EntityType _type, float _health, Inventory _inventoryComponent, StatusEffect _statusEffect) :
-	name(_name), type(_type), health(_health), inventoryComponent(_inventoryComponent), statusEffectComponent(_statusEffect) {}
+    Entity(std::string _name, EntityType _type, float _health, Inventory _inventoryComponent, StatusEffect _statusEffect, int _stamina, int _mana) :
+	name(_name), type(_type), health(_health), inventoryComponent(_inventoryComponent), statusEffectComponent(_statusEffect), stamina(_stamina), mana(_mana) {}
 
     void SetName(std::string _name) { name = _name; }
     std::string GetName() { return name; }
@@ -43,6 +43,12 @@ public:
 	void SetStatusEffect(StatusEffect _statusEffect) { statusEffectComponent = _statusEffect; }
 	StatusEffect& GetStatusEffect() { return statusEffectComponent; }
 
+	void SetStamina(int _stamina) { stamina = _stamina; }
+	int GetStamina() { return stamina; }
+
+	void SetMana(int _mana) { mana = _mana; }
+	int GetMana() { return mana; }
+
 protected:
 
 private:
@@ -50,6 +56,9 @@ private:
     float health;
     bool isDefending;
     EntityType type;
+
+    int stamina;
+    int mana;
 
     Inventory inventoryComponent;
 	Competences competencesComponent;
