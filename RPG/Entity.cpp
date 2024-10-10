@@ -1,15 +1,19 @@
 #include "Entity.h"
 
-void Entity::InitEntity(EntityType _type, int _health, Inventory _inventoryComponent)
-{
-	SetType(_type);
-	SetHealth(_health);
-	SetInventory(_inventoryComponent);
-}
-
 void Entity::Attack(Entity& _enemy)
 {
 	Equipment sword = inventoryComponent.GetItem(0);
-	_enemy.SetHealth(_enemy.GetHealth() - sword.GetDamage());
-	_enemy.GetHealth();
+
+	bool isDef = _enemy.GetDefence();
+
+	float damage = sword.GetDamage();
+
+	if (isDef)
+	{
+		damage /= 2;
+	}
+
+	_enemy.GetDamage(damage);
+
+	std::cout << "\nVie de " << _enemy.GetName() << " apres attaque : " << _enemy.GetHealth();
 }

@@ -5,36 +5,40 @@
 
 enum EntityType
 {
-	Player,
-	NPC
+    Player,
+    NPC
 };
 
 class Entity
 {
 public:
+    // Constructeur
+    Entity(std::string _name, EntityType _type, float _health, Inventory _inventoryComponent) : name(_name), type(_type), health(_health), inventoryComponent(_inventoryComponent) {}
 
-	void InitEntity(EntityType _type, int _health, Inventory _inventoryComponent);
+    void SetName(std::string _name) { name = _name; }
+    std::string GetName() { return name; }
 
-	void SetHealth(int _health) { health = _health; }
-	int GetHealth() { return health; }
+    void SetHealth(float _health) { health = _health; }
+    float GetHealth() { return health; }
 
-	void SetType(EntityType _type) { type = _type; }
-	EntityType GetType() { return type;  }
+    void SetType(EntityType _type) { type = _type; }
+    EntityType GetType() { return type; }
 
-	void SetInventory(Inventory _inventory) { inventoryComponent = _inventory; }
-	Inventory GetInventory() { return inventoryComponent; }
+    void SetInventory(Inventory _inventory) { inventoryComponent = _inventory; }
+    Inventory GetInventory() { return inventoryComponent; }
 
-	void Attack(Entity& _enemy);
+    void Attack(Entity& _enemy);
+	void GetDamage(float _damage) { health -= _damage; }
+
+	void SetDefence(bool _isDefending) { isDefending = _isDefending; }
+	bool GetDefence() { return isDefending; }
 
 protected:
 
-
-
 private:
-
-	int health;
-	EntityType type;
-
-	Inventory inventoryComponent;
-
+    std::string name;
+    float health;
+    bool isDefending;
+    EntityType type;
+    Inventory inventoryComponent;
 };

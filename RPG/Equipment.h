@@ -10,10 +10,13 @@ class Equipment
 {
 public:
 
-	void InitEquipment(EquipmentType _type, int _damage);
+	Equipment(EquipmentType _type, float _damage, float _defense) : type(_type), damage(_damage), defense (_defense) {}
 
-	void SetDamage(int _damage) { damage = _damage; }
-	int GetDamage() { return damage; }
+	void SetDamage(float _damage) { damage = _damage; }
+	float GetDamage() { return damage; }
+
+	void SetDefense(float _defense) { defense = _defense; }
+	float GetDefense() { return defense; }
 
 	void SetType(EquipmentType _type) { type = _type; }
 	EquipmentType GetType() { return type; }
@@ -26,7 +29,8 @@ private:
 
 	//std::string name;
 
-	int damage;
+	float damage;
+	float defense;
 
 	EquipmentType type;
 

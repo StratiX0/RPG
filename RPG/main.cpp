@@ -3,27 +3,25 @@
 int main()
 {
 
-    Equipment sword;
-    sword.InitEquipment(Sword, 10);
-
+	Equipment sword = Equipment(Sword, 10, 1);
     Inventory playerInv;
     playerInv.AddItem(sword);
+    Entity player = Entity("Player", Player, 100, playerInv);
 
-    Entity player;
-    player.InitEntity(Player, 100, playerInv);
 
-    Entity npc;
+    Equipment sword2 = Equipment(Sword, 5, 1);
     Inventory npcInv;
-    npc.InitEntity(NPC, 100, npcInv);
-    
-    npc.SetType(NPC);
-    npc.SetHealth(100);
-    std::cout << "\nVie du npc : " << npc.GetHealth();
-
+	npcInv.AddItem(sword2);
+    Entity npc= Entity("NPC", NPC, 100, npcInv);
 
     player.Attack(npc);
 
-    npc.GetHealth();
+    npc.Attack(player);
 
-    std::cout << "\nVie du npc apres attaque : " << npc.GetHealth();
+    player.Attack(npc);
+
+    player.SetDefence(true);
+
+    npc.Attack(player);
+
 }
