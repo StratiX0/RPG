@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Inventory.h"
+#include "Competences.h"
 
 enum EntityType
 {
@@ -27,11 +28,15 @@ public:
     void SetInventory(Inventory _inventory) { inventoryComponent = _inventory; }
     Inventory GetInventory() { return inventoryComponent; }
 
-    void Attack(Entity& _enemy);
+    void Attack(float _damage, Entity& _enemy);
 	void GetDamage(float _damage) { health -= _damage; }
 
 	void SetDefence(bool _isDefending) { isDefending = _isDefending; }
 	bool GetDefence() { return isDefending; }
+
+	void SetCompetences(Competences _competences) { competencesComponent = _competences; }
+	void AddCompetences(Competence _competence) { competencesComponent.AddCompetence(_competence); }
+	Competences& GetCompetences() { return competencesComponent; }
 
 protected:
 
@@ -40,5 +45,7 @@ private:
     float health;
     bool isDefending;
     EntityType type;
+
     Inventory inventoryComponent;
+	Competences competencesComponent;
 };

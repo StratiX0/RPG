@@ -1,19 +1,17 @@
 #include "Entity.h"
 
-void Entity::Attack(Entity& _enemy)
+void Entity::Attack(float _damage, Entity& _enemy)
 {
-	Equipment sword = inventoryComponent.GetItem(0);
+	//Equipment sword = inventoryComponent.GetItem(0);
 
-	bool isDef = _enemy.GetDefence();
-
-	float damage = sword.GetDamage();
-
-	if (isDef)
+	if (_enemy.GetDefence())
 	{
-		damage /= 2;
+		_damage /= 2;
 	}
 
-	_enemy.GetDamage(damage);
+	_enemy.GetDamage(_damage);
 
-	std::cout << "\nVie de " << _enemy.GetName() << " apres attaque : " << _enemy.GetHealth();
+	_enemy.SetDefence(false);
+
+	std::cout << "Vie de " << _enemy.GetName() << " apres attaque : " << _enemy.GetHealth() << std::endl;
 }
